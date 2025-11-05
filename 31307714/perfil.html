@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.ciens.ucv.ve/wp-content/uploads/2025/07/cropped-logonuevo-32x32.png" type="image/x-icon">
+    <title>Samantha Ramírez</title>
+    <style>
+        /* Color del enlace del email en "orange" y "red" al hacer clic sobre el enlace */
+        a[href^="mailto:"] {
+            color: orange;
+        }
+        a[href^="mailto:"]:active {
+            color: red;
+        }
+        p, strong {
+            margin-top: 2.5px;
+            margin-bottom: 2.5px;
+        }
+        /* En letra más grande y de otro color */
+        .name {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2em;
+            color: orange;
+        }
+        /* Con una fuente distinta a la de defecto, y en cursiva. */
+        .description {
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+        }
+        /* Curva del borde superior izquierdo de la imagen */
+        .img {
+            width: 180px;
+            height: auto;
+            border-top-left-radius: 50px;
+        }
+        .perfil-container {
+            margin: 50px auto;
+            width: 800px;
+            display: flex;
+            align-items: stretch;
+            gap: 5px;
+        }
+        .perfil-data {
+            border: 1px solid black;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+        .perfil-data-list {
+            margin-top: 15px;
+            display: flex; 
+            flex-wrap: wrap;
+        }
+        .perfil-data-list p {
+            width: 50%;
+            text-align: left;
+            
+        }
+        .perfil-data-list strong {
+            width: 50%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="perfil-container">
+        <img class="img" src="/31307714/31307714.jpg">
+        <div class="perfil-data">
+            <p class="name">Samantha Ramírez</p>
+            <p class="description">
+                Soy estudiante del sexto semestre en la UCV. Con tres años
+                de experiencia en el campo de la programación y con manejo
+                de ciertos lenguajes.
+            </p>
+            <div class="perfil-data-list">
+                <p>Mi color favorito es:</p><p>Azul</p>
+                <p>Mi libro favorito es:</p><p>Una vida con propósito</p>
+                <p>Mis estilo de música preferida es:</p><p>Rock</p>
+                <p>Mis Videojuegos favoritos son:</p><p>Viste a Barbie</p>
+                <strong>Lenguajes aprendidos:</p><p>Python, JS, PHP, Java, C++</strong>
+            </div>
+            <p>
+                Si necesitan comunicarse conmigo me pueden escribir a: 
+                <a href="mailto:samantha.p.ramirez.y@gmail.com">samantha.p.ramirez.y@gmail.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,111 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Listado</title>
-    <style>
-        * {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-        }
-        /* Debe estar separadas gráficamente de <section> por una línea. */
-        header nav {
-            margin-bottom: 10px;
-            color: white;
-            font-size: 1.5em;
-            background-color: #79a6e8;
-            border-bottom: 1px solid #79a6e8;
-            padding: 10px 10px;
-        }
-        nav ul {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li:not(:last-child) {
-            border-right: 1px solid white; 
-            padding-right: 10px;
-            margin-right: 10px;
-        }
-        nav ul li:first-child {
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        li span {
-            font-size: 70%;
-        }
-        header nav form {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        header nav input[type="text"] {
-            padding: 5px;
-            border: none;
-            width: 150px;
-            height: 30px;
-        }
-        header nav input[type="submit"] {
-            background-color: #fff;
-            color: #79a6e8;
-            font-weight: bold;
-            border: 1px solid #ccc;
-            padding: 5px 15px;
-            height: 30px;
-        }
-        /* Debe estar separadas gráficamente de <section> por una línea. */
-        footer {
-            margin: 10px;
-            color: grey;
-            font-weight: bold;
-            text-align: center;
-        }
-        .cards-container {
-            margin: 1.5em auto;
-            width: 90%;
-            max-width: 900px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 20px;
-            list-style: none;
-            padding: 0;
-        }
-        .card-content {
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 0;
-            text-align: center;
-            display: block;
-        }
-        .card-content-data {
-            padding: 10px 5px;
-        }
-        .card-content img {
-            object-fit: contain;
-            padding: 20px;
-            aspect-ratio: 1 / 1;
-            width: 100%;
-            height: auto;
-        }
-        .card-content-data p {
-            margin: 0;
-            font-size: 1em;
-            font-weight: 600;
-            color: #79a6e8;
-        }
-    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li>ATI <span>[UCV]</span> 2025-2</li>
-                <li><span>Hola, Samantha</span></li>
+                <li><span>Hola, Samantha Ramírez</span></li>
                 <li>
                     <form>
                        <input type="text" placeholder="Nombre..." value="">
@@ -122,75 +26,51 @@
         <ul class="cards-container">
             <li class="card-content">
                 <img class="img" src="/31307714/31307714.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Samantha Ramírez</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy1/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 1</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy2/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 2</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy3/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 3</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy4/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 4</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy5/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 5</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy6/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 6</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy1/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 1</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy2/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 2</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy3/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 3</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy4/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 4</p>
             </li>
             <li class="card-content">
                 <img class="img" src="/dummy5/dummy.jpg">
-                <div class="card-content-data">
-                    <p>Nombre1</p>
-                </div>
+                <p>Dummy 5</p>
             </li>
         </ul>
     </section>

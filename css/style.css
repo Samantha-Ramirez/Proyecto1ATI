@@ -127,11 +127,13 @@ footer {
     list-style: none;
 }
 .card-content {
-    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     padding: 0;
     display: block;
     text-align: center;
+    transition: transform .2s;
 }
 .card-content img {
     width: 80%;
@@ -145,4 +147,13 @@ footer {
     padding: 10px 5px;
     font-size: 1.1em;
     color: #79a6e8;
+}
+/* 
+Incluya un efecto de zoom y de rotación sobre la imagen y texto de los alumnos cada
+vez que se pase por encima el ratón y cambie también el color de fondo a #99c5dd 
+*/
+.card-content:hover {
+    background-color: #99c5dd;
+    transform: scale(1.1) rotate(30deg);
+    transition: transform 0.5s ease;
 }

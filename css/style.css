@@ -4,6 +4,7 @@
 }
 body {
     margin: 0;
+    font-size: 16px;
 }
 /* PERFIL */
 /* Color del enlace del email en "orange" y "red" al hacer clic sobre el enlace */
@@ -12,6 +13,21 @@ a[href^="mailto:"] {
 }
 a[href^="mailto:"]:active {
     color: red;
+}
+.perfil-container {
+    margin: 50px auto;
+    max-width: 800px;
+    display: flex;
+    align-items: stretch;
+    gap: 5px;
+}
+/* Curva del borde superior izquierdo de la imagen */
+.perfil-container img {
+    border-top-left-radius: 50px;
+    width: 180px;
+    height: 100%;
+    display: block;
+    object-fit: cover;
 }
 .perfil-content {
     border: 1px solid black;
@@ -22,36 +38,17 @@ a[href^="mailto:"]:active {
 .perfil-content-name {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     color: orange;
 }
 /* Con una fuente distinta a la de defecto, y en cursiva. */
 .perfil-content-description {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
 }
-.perfil-content-footer {
-    margin-top: 0;
-    margin-bottom: 1em;
-}
-/* Curva del borde superior izquierdo de la imagen */
-.perfil-container img {
-    border-top-left-radius: 50px;
-    width: 180px;
-    height: auto;
-    object-fit: cover;
-}
-.perfil-container {
-    margin: 50px auto;
-    width: 800px;
-    display: flex;
-    align-items: stretch;
-    gap: 5px;
-}
 .perfil-content-data {
-    margin-top: 1em;
     line-height: 1.6;
     display: flex; 
     flex-wrap: wrap;
@@ -60,7 +57,13 @@ a[href^="mailto:"]:active {
     margin-top: 0;
     margin-bottom: 0;
     width: 50%;
+    font-family:'Times New Roman', Times, serif;
     text-align: left;
+}
+.perfil-content-footer {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-family:'Times New Roman', Times, serif;
 }
 
 /* INDEX */
@@ -69,7 +72,7 @@ header nav {
     background-color: #79a6e8;
     border-bottom: 1px solid #79a6e8;
     padding: 10px 10px;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     color: white;
 }
 header nav form {
@@ -79,17 +82,19 @@ header nav form {
 }
 header nav input[type="text"] {
     border: none;
+    padding: 5px;
     width: 150px;
     height: auto;
-    padding: 5px;
+    font-size: 70%;
 }
 header nav input[type="submit"] {
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 5px 15px;
+    padding: 5px;
     height: auto;
     font-weight: bold;
     color: #79a6e8;
+    font-size: 70%;
 }
 nav ul {
     margin: 0;
@@ -100,7 +105,6 @@ nav ul {
     list-style: none;
 }
 nav ul li:first-child {
-    font-size: 1.1em;
     font-weight: bold;
 }
 li span {
@@ -116,12 +120,12 @@ footer {
     text-align: center;
 }
 .cards-container {
-    margin: 1.5em auto;
-    padding: 0;
+    margin: 1.5rem auto;
+    padding: 0 30px;
     max-width: 1100px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 25px;
+    grid-gap: 30px;
     list-style: none;
 }
 .card-content {
@@ -134,16 +138,16 @@ footer {
     transition: transform .2s;
 }
 .card-content img {
+    padding: 20px 20px 0 20px;
     width: 80%;
     height: auto;
-    padding: 20px 20px 0 20px;
     object-fit: contain;
     aspect-ratio: 1 / 1;
 }
 .card-content p {
     margin: 0;
     padding: 10px 5px;
-    font-size: 1.1em;
+    font-size: 1rem;
     color: #79a6e8;
 }
 /* 
@@ -152,6 +156,177 @@ vez que se pase por encima el ratón y cambie también el color de fondo a #99c5
 */
 .card-content:hover {
     background-color: #99c5dd;
-    transform: scale(1.1) rotate(30deg);
+    transform: scale(1.1) rotate(10deg);
     transition: transform 0.5s ease;
+}
+/* Características de cuatro tipos de pantallas usando media con breakpoint */
+/* Dispositivos móviles */
+@media (max-width: 480px) {
+    body {
+        font-size: 8px;
+    }
+    /* PERFIL */
+    .perfil-container {
+        width: 95%;
+    }
+    .perfil-container img {
+        width: 120px;
+    }
+    .perfil-content {
+        width: 100%;
+    }
+    .perfil-content-name {
+        font-size: 1rem;
+    }
+    .perfil-content-description {
+        margin-top: 0.2rem;
+        margin-bottom: 0.5rem;
+    }
+    .perfil-content-footer {
+        margin-bottom: 0.7rem;
+    }
+    /* INDEX */
+    header nav {
+        font-size: 1rem;
+    }
+    header nav form {
+        width: 100%;
+    }
+    header nav input[type="text"] {
+        width: 70%;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    footer {
+        font-size: 0.8rem;
+    }
+    .cards-container {
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+    }
+    .card-content p {
+        font-size: 0.8rem;
+    }
+    .card-content:hover {
+        transform: scale(0.8) rotate(6deg);
+        transition: transform 0.5s ease;
+    }
+}
+/* iPads, tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        font-size: 10px;
+    }
+    /* PERFIL */
+    .perfil-container {
+        width: 95%;
+    }
+    .perfil-container img {
+        width: 140px;
+    }
+    .perfil-content {
+        width: 100%;
+    }
+    .perfil-content-name {
+        font-size: 1.2rem;
+    }
+    .perfil-content-description {
+        margin-top: 0.4rem;
+        margin-bottom: 0.7rem;
+    }
+    .perfil-content-footer {
+        margin-bottom: 0.9rem;
+    }
+    /* INDEX */
+    header nav {
+        font-size: 1.2rem;
+    }
+    footer {
+        font-size: 0.8rem;
+    }
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card-content p {
+        font-size: 0.8rem;
+    }
+    .card-content:hover {
+        transform: scale(1) rotate(8deg);
+        transition: transform 0.5s ease;
+    }
+}
+/* Pantallas pequeñas, ordenadores portátiles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+    /* PERFIL */
+    .perfil-container {
+        width: 95%;
+    }
+    .perfil-container img {
+        width: 180px;
+    }
+    .perfil-content {
+        width: 100%;
+    }
+    .perfil-content-name {
+        font-size: 1.8rem;
+    }
+    .perfil-content-description {
+        margin-top: 0.5rem;
+        margin-bottom: 0.8rem;
+    }
+    .perfil-content-footer {
+        margin-bottom: 1rem;
+    }
+    /* INDEX */
+    header nav {
+        font-size: 1.5rem;
+    }
+    footer {
+        font-size: 1rem;
+    }
+    .card-content p {
+        font-size: 1rem;
+    }
+}
+/* Pantallas grandes, ordenadores de escritorio */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+    /* PERFIL */
+    .perfil-container {
+        width: 95%;
+    }
+    .perfil-container img {
+        width: 200px;
+    }
+    .perfil-content {
+        width: 100%;
+    }
+    .perfil-content-name {
+        font-size: 2rem;
+    }
+    .perfil-content-description {
+        margin-top: 0.7rem;
+        margin-bottom: 1rem;
+    }
+    .perfil-content-footer {
+        margin-bottom: 1.2rem;
+    }
+    /* INDEX */
+    header nav {
+        font-size: 1.7rem;
+    }
+    footer {
+        font-size: 1.2rem;
+    }
+    .card-content p {
+        font-size: 1.2rem;
+    }
 }

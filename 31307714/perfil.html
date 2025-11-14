@@ -9,7 +9,13 @@
 </head>
 <body>
     <div class="perfil-container">
-        <img src="/31307714/31307714.jpg">
+        <!-- Imagen pequeña para teléfonos móviles y tablets, 
+        mientras que en la versión para ordenadores se cambie a la imagen grande. -->
+        <picture>
+            <source media="(min-width:769px)" srcset="/31307714/31307714Grande.jpg">
+            <source media="(min-width:320px)" srcset="/31307714/31307714Pequeña.jpg">
+            <img src="/31307714/31307714Pequeña.jpg">
+        </picture>
         <div class="perfil-content">
             <p class="perfil-content-name">Samantha Ramírez</p>
             <p class="perfil-content-description">

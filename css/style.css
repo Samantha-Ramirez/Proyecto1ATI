@@ -60,7 +60,7 @@ a[href^="mailto:"]:active {
     font-family:'Times New Roman', Times, serif;
     text-align: left;
 }
-.perfil-content-footer {
+.perfil-content-contact {
     margin-top: 0;
     margin-bottom: 1rem;
     font-family:'Times New Roman', Times, serif;
@@ -150,10 +150,6 @@ footer {
     font-size: 1rem;
     color: #79a6e8;
 }
-/* 
-Incluya un efecto de zoom y de rotación sobre la imagen y texto de los alumnos cada
-vez que se pase por encima el ratón y cambie también el color de fondo a #99c5dd 
-*/
 .card-content:hover {
     background-color: #99c5dd;
     transform: scale(1.1) rotate(10deg);
@@ -182,7 +178,7 @@ vez que se pase por encima el ratón y cambie también el color de fondo a #99c5
         margin-top: 0.2rem;
         margin-bottom: 0.5rem;
     }
-    .perfil-content-footer {
+    .perfil-content-contact {
         margin-bottom: 0.7rem;
     }
     /* INDEX */
@@ -237,7 +233,7 @@ vez que se pase por encima el ratón y cambie también el color de fondo a #99c5
         margin-top: 0.4rem;
         margin-bottom: 0.7rem;
     }
-    .perfil-content-footer {
+    .perfil-content-contact {
         margin-bottom: 0.9rem;
     }
     /* INDEX */
@@ -280,7 +276,7 @@ vez que se pase por encima el ratón y cambie también el color de fondo a #99c5
         margin-top: 0.5rem;
         margin-bottom: 0.8rem;
     }
-    .perfil-content-footer {
+    .perfil-content-contact {
         margin-bottom: 1rem;
     }
     /* INDEX */
@@ -316,7 +312,7 @@ vez que se pase por encima el ratón y cambie también el color de fondo a #99c5
         margin-top: 0.7rem;
         margin-bottom: 1rem;
     }
-    .perfil-content-footer {
+    .perfil-content-contact {
         margin-bottom: 1.2rem;
     }
     /* INDEX */

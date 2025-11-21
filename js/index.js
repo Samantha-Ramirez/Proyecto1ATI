@@ -1,11 +1,12 @@
 import { getJoinedArray, getImgElement, doOnload } from './utils.js';
 
-function getCardElement(perfil) {
+function getCardElement(perfil, configId) {
     const aElement = document.createElement('a');
     const liElement = document.createElement('li');
     const imgElement = getImgElement(perfil);
     const pElement = document.createElement('p');
-    aElement.href = `perfil.html?id=${perfil.ci}`;
+
+    aElement.href = `perfil.html?lang=${configId}&id=${perfil.ci}`;
     liElement.className = 'card-content';
     pElement.textContent = perfil.nombre;
 
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cardsContainerElement.innerHTML = '';
                 if(query === '') {
                     perfiles.forEach(perfil => {
-                        const cardElement = getCardElement(perfil);
+                        const cardElement = getCardElement(perfil, configId);
                         cardsContainerElement.appendChild(cardElement);
                     });
                     return;
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 if(filteredProfiles.length > 0) {
                     filteredProfiles.forEach(perfil => {
-                        const cardElement = getCardElement(perfil);
+                        const cardElement = getCardElement(perfil, configId);
                         cardsContainerElement.appendChild(cardElement);
                     });
                 } else {
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // CONTAINER
             const cardsContainerElement = document.querySelector('.cards-container');
             perfiles.forEach(perfil => {
-                const cardElement = getCardElement(perfil);
+                const cardElement = getCardElement(perfil, configId);
                 cardsContainerElement.appendChild(cardElement);
             });
 

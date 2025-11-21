@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Object.entries(dataIds).forEach(([key, value]) => {
                 const dataLabelElement = document.getElementById(key);
                 const dataValueElement = dataLabelElement.nextElementSibling;
-                dataLabelElement.textContent = config[value];
+                dataLabelElement.textContent = `${config[value]}:`;
                 dataValueElement.textContent = getJoinedArray(perfil[value], ', ');
             });
 

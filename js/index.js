@@ -29,11 +29,43 @@ document.addEventListener('DOMContentLoaded', function() {
             const siteGreetingsElement = document.getElementById('siteGreetings');
             siteGreetingsElement.textContent = `${config.saludo}, ${perfiles[0].nombre}`;
 
+            // SEARCH
+            const searchProfile = function() {
+                cardsMessageElement.style.display = 'none';
+                cardsContainerElement.style.display = 'grid';
+                
+                const query = searchTextElement.value.trim().toLowerCase();
+                cardsContainerElement.innerHTML = '';
+                if(query === '') {
+                    perfiles.forEach(perfil => {
+                        const cardElement = getCardElement(perfil);
+                        cardsContainerElement.appendChild(cardElement);
+                    });
+                    return;
+                }
+                const filteredProfiles = perfiles.filter(perfil => {
+                    return perfil.nombre.toLowerCase().includes(query);
+                });
+                if(filteredProfiles.length > 0) {
+                    filteredProfiles.forEach(perfil => {
+                        const cardElement = getCardElement(perfil);
+                        cardsContainerElement.appendChild(cardElement);
+                    });
+                } else {
+                    cardsContainerElement.style.display = 'none';
+                    cardsMessageElement.style.display = 'flex';
+                    cardsMessageElement.textContent = `${config.no_encontrado}: ${query}`;
+                }
+            };
             const searchSubmitElement = document.getElementById('searchSubmit');
             searchSubmitElement.value = config.buscar;
 
             const searchTextElement = document.getElementById('searchText');
             searchTextElement.placeholder = `${config.nombre}...`;
+            searchTextElement.addEventListener('input', searchProfile);
+
+            const searchForm = searchSubmitElement.closest('form');
+            searchForm.addEventListener('submit', (e) => e.preventDefault());
 
             // FOOTER
             const copyRightElement = document.getElementById('copyRight');
@@ -45,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const cardElement = getCardElement(perfil);
                 cardsContainerElement.appendChild(cardElement);
             });
+
+            const cardsMessageElement = document.querySelector('.cards-message');
         }
     };
 

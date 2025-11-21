@@ -1,69 +1,52 @@
-function getJoinedArray(array, sep) {
-    if(Array.isArray(array)) {
-        array = array.join(sep);
-    }
-    return array;
-}
+import { getJoinedArray, getImgElement, doOnload } from './utils.js';
 
-function getCardElement(profile) {
+function getCardElement(perfil) {
+    const aElement = document.createElement('a');
     const liElement = document.createElement('li');
-    const imgElement = getImgElement(profile);
+    const imgElement = getImgElement(perfil);
     const pElement = document.createElement('p');
+    aElement.href = `perfil.html?id=${perfil.ci}`;
     liElement.className = 'card-content';
-    pElement.textContent = profile.nombre;
+    pElement.textContent = perfil.nombre;
 
     liElement.appendChild(imgElement);
     liElement.appendChild(pElement);
-    return liElement;
+    aElement.appendChild(liElement);
+    return aElement;
 }
 
-function getImgElement(profile) {
-    const imgElement = document.createElement('img');
-    imgElement.className = 'img';
-    imgElement.src = profile.imagen;
-    if(profile.imagenGrande) {
-        const imgContainer = document.createElement('picture');
-        const sourceLgElement = document.createElement('source');
-        const sourceSmElement = document.createElement('source');
-        sourceLgElement.media = '(min-width:769px)';
-        sourceLgElement.srcset = profile.imagenGrande;
-        sourceSmElement.media = '(min-width:320px)';
-        sourceSmElement.srcset = profile.imagen;
+document.addEventListener('DOMContentLoaded', function() {
+    const runLogic = function(profileId, configId) {
+        if(typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
+            // HEAD
+            const titleElement = document.getElementById('title');
+            titleElement.textContent = getJoinedArray(config.sitio, ' ');
 
-        imgContainer.appendChild(sourceLgElement);
-        imgContainer.appendChild(sourceSmElement);
-        imgContainer.appendChild(imgElement);
-        return imgContainer;
-    }
-    return imgElement;
-}
+            // NAV
+            const siteTitleElement = document.getElementById('siteTitle');
+            siteTitleElement. innerHTML = `${config.sitio[0]} <span>${config.sitio[1]}</span> ${config.sitio[2]}`;
 
-window.onload = function() {
-    // HEAD
-    const titleElement = document.getElementById('title');
-    titleElement.textContent = getJoinedArray(config.sitio, ' ');
+            const siteGreetingsElement = document.getElementById('siteGreetings');
+            siteGreetingsElement.textContent = `${config.saludo}, ${perfiles[0].nombre}`;
 
-    // NAV
-    const siteTitleElement = document.getElementById('siteTitle');
-    siteTitleElement. innerHTML = `${config.sitio[0]} <span>${config.sitio[1]}</span> ${config.sitio[2]}`;
+            const searchSubmitElement = document.getElementById('searchSubmit');
+            searchSubmitElement.value = config.buscar;
 
-    const siteGreetingsElement = document.getElementById('siteGreetings');
-    siteGreetingsElement.textContent = config.saludo + ', ' + perfiles[0].nombre;
+            const searchTextElement = document.getElementById('searchText');
+            searchTextElement.placeholder = `${config.nombre}...`;
 
-    const searchSubmitElement = document.getElementById('searchSubmit');
-    searchSubmitElement.value = config.buscar;
+            // FOOTER
+            const copyRightElement = document.getElementById('copyRight');
+            copyRightElement.textContent = config.copyRight;
 
-    const searchTextElement = document.getElementById('searchText');
-    searchTextElement.placeholder = config.nombre + '...';
+            // CONTAINER
+            const cardsContainerElement = document.querySelector('.cards-container');
+            perfiles.forEach(perfil => {
+                const cardElement = getCardElement(perfil);
+                cardsContainerElement.appendChild(cardElement);
+            });
+        }
+    };
 
-    // FOOTER
-    const copyRightElement = document.getElementById('copyRight');
-    copyRightElement.textContent = config.copyRight;
-
-    // CONTAINER
-    const cardsContainerElement = document.querySelector('.cards-container');
-    perfiles.forEach(profile => {
-        const cardElement = getCardElement(profile);
-        cardsContainerElement.appendChild(cardElement);
-    });
-}
+    doOnload(runLogic);
+});

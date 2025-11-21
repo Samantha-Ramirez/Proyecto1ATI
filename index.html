@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>ATI [UCV] 2025-2</title>
+    <script type="text/javascript" src="datos/index.json" defer></script>
+    <script type="module" src="js/index.js" defer></script>
+    <title id="title"></title>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li>ATI <span>[UCV]</span> 2025-2</li>
-                <li><span>Hola, Samantha Ramírez</span></li>
+                <li id="siteTitle"></li>
+                <li><span id="siteGreetings"></span></li>
                 <li>
                     <form>
-                       <input type="text" placeholder="Nombre..." value="">
-                       <input type="submit" value="Buscar"> 
+                       <input id="searchText" type="text" placeholder="" value="">
+                       <input id="searchSubmit" type="submit" value=""> 
                     </form>
                 </li>
             </ul>
@@ -25,63 +27,10 @@
     <br>
     <section>
         <ul class="cards-container">
-            <li class="card-content">
-                <picture>
-                    <source media="(min-width:769px)" srcset="/31307714/31307714Grande.jpg">
-                    <source media="(min-width:320px)" srcset="/31307714/31307714Pequeña.jpg">
-                    <img src="/31307714/31307714Pequeña.jpg">
-                </picture>
-                <p>Samantha Ramírez</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy1/dummy.jpg">
-                <p>Dummy 1</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy2/dummy.jpg">
-                <p>Dummy 2</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy3/dummy.jpg">
-                <p>Dummy 3</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy4/dummy.jpg">
-                <p>Dummy 4</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy5/dummy.jpg">
-                <p>Dummy 5</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy6/dummy.jpg">
-                <p>Dummy 6</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy1/dummy.jpg">
-                <p>Dummy 1</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy2/dummy.jpg">
-                <p>Dummy 2</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy3/dummy.jpg">
-                <p>Dummy 3</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy4/dummy.jpg">
-                <p>Dummy 4</p>
-            </li>
-            <li class="card-content">
-                <img class="img" src="/dummy5/dummy.jpg">
-                <p>Dummy 5</p>
-            </li>
         </ul>
+        <p class="cards-message"></p>
     </section>
     <br>
-    <footer>
-        Copyright © 2025 Escuela de computación - ATI. Todos los derechos reservados
-    </footer>
+    <footer id="copyRight"></footer>
 </body>
 </html>

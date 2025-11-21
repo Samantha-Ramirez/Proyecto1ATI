@@ -1,0 +1,13 @@
+const perfil = {	
+	"nombre":"Samantha Ramírez",
+	"descripcion":"Soy estudiante del sexto semestre en la UCV. Con tres años de experiencia en el campo de la programación y con manejo de ciertos lenguajes.",
+	"color": "Azul",
+	"libro": ["Una vida con propósito"],
+	"musica": ["Rock"],
+	"video_juego": ["Viste a Barbie"],
+	"lenguajes": ["Python", "JS", "PHP", "Java", "C++"],
+	"email":"samantha.p.ramirez.y@gmail.com",
+	"ci": "31307714",
+	"genero":"femenino",
+	"fecha_nacimiento":"18/10/2005",
+}

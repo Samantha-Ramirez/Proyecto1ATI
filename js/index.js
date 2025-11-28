@@ -18,7 +18,7 @@ function getCardElement(perfil, configId) {
 
 document.addEventListener('DOMContentLoaded', function() {
     const runLogic = function(profileId, configId) {
-        if(typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
+        if (typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
             // HEAD
             const titleElement = document.getElementById('title');
             titleElement.textContent = getJoinedArray(config.sitio, ' ');
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const query = searchTextElement.value.trim().toLowerCase();
                 cardsContainerElement.innerHTML = '';
-                if(query === '') {
+                if (query === '') {
                     perfiles.forEach(perfil => {
                         const cardElement = getCardElement(perfil, configId);
                         cardsContainerElement.appendChild(cardElement);
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const filteredProfiles = perfiles.filter(perfil => {
                     return perfil.nombre.toLowerCase().includes(query);
                 });
-                if(filteredProfiles.length > 0) {
+                if (filteredProfiles.length > 0) {
                     filteredProfiles.forEach(perfil => {
                         const cardElement = getCardElement(perfil, configId);
                         cardsContainerElement.appendChild(cardElement);

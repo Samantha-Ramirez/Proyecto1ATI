@@ -1,5 +1,5 @@
 export function getJoinedArray(array, sep) {
-    if(Array.isArray(array)) {
+    if (Array.isArray(array)) {
         array = array.join(sep);
     }
     return array;
@@ -7,9 +7,9 @@ export function getJoinedArray(array, sep) {
 
 export function getUrlParameter(name, def) {
     const param = new URLSearchParams(window.location.search).get(name);
-    if(!param) {
+    if (!param) {
         let url = window.location.href;
-        if(url.indexOf('?') > -1) {
+        if (url.indexOf('?') > -1) {
             url += `&${name}=${def}`;
         }else {
             url += `?${name}=${def}`;
@@ -23,7 +23,8 @@ export function getUrlParameter(name, def) {
 export function getImgElement(perfil) {
     const imgElement = document.createElement('img');
     imgElement.src = perfil.imagen;
-    if(perfil.imagenGrande) {
+    imgElement.fetchPriority = 'high';
+    if (perfil.imagenGrande) {
         const imgContainer = document.createElement('picture');
         const sourceLgElement = document.createElement('source');
         const sourceSmElement = document.createElement('source');
@@ -49,7 +50,7 @@ export function doOnload(runLogic) {
 
     const handleScriptLoad = function() {
         loadedScripts++;
-        if(loadedScripts === totalScripts) {
+        if (loadedScripts === totalScripts) {
             runLogic(profileId, configId);
         }
     };

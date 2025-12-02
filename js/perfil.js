@@ -3,7 +3,7 @@ import { getJoinedArray, getImgElement, doOnload } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const runLogic = function(profileId, configId) {
-        if(typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
+        if (typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
             // HEAD
             const titleElement = document.getElementById('title');
             titleElement.textContent = perfil.nombre;

@@ -16,8 +16,8 @@ function getCardElement(perfil, configId) {
     return aElement;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const runLogic = function(profileId, configId) {
+document.addEventListener('DOMContentLoaded', function () {
+    const runLogic = function (profileId, configId) {
         if (typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
             // HEAD
             const titleElement = document.getElementById('title');
@@ -25,30 +25,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // NAV
             const siteTitleElement = document.getElementById('siteTitle');
-            siteTitleElement. innerHTML = `${config.sitio[0]} <span>${config.sitio[1]}</span> ${config.sitio[2]}`;
+            siteTitleElement.innerHTML = `${config.sitio[0]} <span>${config.sitio[1]}</span> ${config.sitio[2]}`;
 
             const siteGreetingsElement = document.getElementById('siteGreetings');
             siteGreetingsElement.textContent = `${config.saludo}, ${perfiles[0].nombre}`;
 
             // SEARCH
-            const searchProfile = function() {
+            const searchProfile = function () {
                 cardsMessageElement.style.display = 'none';
                 cardsContainerElement.style.display = 'grid';
-                
+
                 const query = searchTextElement.value.trim().toLowerCase();
                 cardsContainerElement.innerHTML = '';
                 if (query === '') {
-                    perfiles.forEach(perfil => {
+                    perfiles.forEach((perfil) => {
                         const cardElement = getCardElement(perfil, configId);
                         cardsContainerElement.appendChild(cardElement);
                     });
                     return;
                 }
-                const filteredProfiles = perfiles.filter(perfil => {
+                const filteredProfiles = perfiles.filter((perfil) => {
                     return perfil.nombre.toLowerCase().includes(query);
                 });
                 if (filteredProfiles.length > 0) {
-                    filteredProfiles.forEach(perfil => {
+                    filteredProfiles.forEach((perfil) => {
                         const cardElement = getCardElement(perfil, configId);
                         cardsContainerElement.appendChild(cardElement);
                     });
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // CONTAINER
             const cardsContainerElement = document.querySelector('.cards-container');
-            perfiles.forEach(perfil => {
+            perfiles.forEach((perfil) => {
                 const cardElement = getCardElement(perfil, configId);
                 cardsContainerElement.appendChild(cardElement);
             });

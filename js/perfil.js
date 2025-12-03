@@ -1,8 +1,7 @@
-
 import { getJoinedArray, getImgElement, doOnload } from './utils.js';
 
-document.addEventListener('DOMContentLoaded', function() {
-    const runLogic = function(profileId, configId) {
+document.addEventListener('DOMContentLoaded', function () {
+    const runLogic = function (profileId, configId) {
         if (typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
             // HEAD
             const titleElement = document.getElementById('title');
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // CONTAINER
             const imgElement = document.querySelector('.perfil-img');
-            const profileImg = getImgElement(perfiles.find(p => p.ci === profileId));
+            const profileImg = getImgElement(perfiles.find((p) => p.ci === profileId));
             imgElement.appendChild(profileImg);
 
             // CONTENT
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             descriptionElement.textContent = perfil.descripcion;
 
             // CONTENT DATA
-            const dataIds = { 'color': 'color', 'book': 'libro', 'music': 'musica', 'videogames': 'video_juego', 'langs': 'lenguajes' };
+            const dataIds = { color: 'color', book: 'libro', music: 'musica', videogames: 'video_juego', langs: 'lenguajes' };
             Object.entries(dataIds).forEach(([key, value]) => {
                 const dataLabelElement = document.getElementById(key);
                 const dataValueElement = dataLabelElement.nextElementSibling;

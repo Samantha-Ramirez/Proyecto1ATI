@@ -11,7 +11,7 @@ export function getUrlParameter(name, def) {
         let url = window.location.href;
         if (url.indexOf('?') > -1) {
             url += `&${name}=${def}`;
-        }else {
+        } else {
             url += `?${name}=${def}`;
         }
         window.location.href = url;
@@ -48,7 +48,7 @@ export function doOnload(runLogic) {
     let loadedScripts = 0;
     const totalScripts = 2;
 
-    const handleScriptLoad = function() {
+    const handleScriptLoad = function () {
         loadedScripts++;
         if (loadedScripts === totalScripts) {
             runLogic(profileId, configId);

@@ -97,8 +97,8 @@ a[href^="mailto:"]:active {
     padding: 5px;
     height: auto;
     font-weight: bold;
-    color: #79a6e8;
     font-size: 70%;
+    color: #79a6e8;
 }
 .navbar-content {
     margin: 0;
@@ -165,11 +165,28 @@ footer {
     transform: scale(1.1) rotate(10deg);
     transition: transform 0.5s ease;
 }
-.cards-message {
+/* PERFIL, INDEX */
+.site-message {
     display: none;
     justify-content: center;
     font-size: 1.8rem;
     color: #79a6e8;
+}
+.site-error {
+    background-color: #f44336;
+    border-bottom: 3px solid #f44336;
+    position: fixed;
+    padding: 20px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+}
+.hidden {
+    display: none !important;
 }
 /* Características de cuatro tipos de pantallas usando media con breakpoint */
 /* Dispositivos móviles */
@@ -226,7 +243,11 @@ footer {
         transform: scale(0.8) rotate(6deg);
         transition: transform 0.5s ease;
     }
-    .cards-message {
+    /* PERFIL, INDEX */
+    .site-message {
+        font-size: 1rem;
+    }
+    .site-error {
         font-size: 1rem;
     }
 }
@@ -272,7 +293,11 @@ footer {
         transform: scale(1) rotate(8deg);
         transition: transform 0.5s ease;
     }
-    .cards-message {
+    /* PERFIL, INDEX */
+    .site-message {
+        font-size: 1.2rem;
+    }
+    .site-error {
         font-size: 1.2rem;
     }
 }
@@ -311,7 +336,11 @@ footer {
     .card-content p {
         font-size: 1rem;
     }
-    .cards-message {
+    /* PERFIL, INDEX */
+    .site-message {
+        font-size: 1.8rem;
+    }
+    .site-error {
         font-size: 1.8rem;
     }
 }
@@ -350,7 +379,11 @@ footer {
     .card-content p {
         font-size: 1.2rem;
     }
-    .cards-message {
+    /* PERFIL, INDEX */
+    .site-message {
+        font-size: 2rem;
+    }
+    .site-error {
         font-size: 2rem;
     }
 }

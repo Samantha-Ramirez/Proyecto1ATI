@@ -16,6 +16,15 @@ function getCardElement(perfil, configId) {
     return aElement;
 }
 
+function appendCardElements(container, elements, configId) {
+    const fragmentContainer = document.createDocumentFragment();
+    elements.forEach((element) => {
+        const cardElement = getCardElement(element, configId);
+        fragmentContainer.appendChild(cardElement);
+    });
+    container.appendChild(fragmentContainer);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const runLogic = function (profileId, configId) {
         if (typeof perfil !== 'undefined' && typeof config !== 'undefined' && perfil.ci === profileId) {
@@ -38,20 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 const query = searchTextElement.value.trim().toLowerCase();
                 cardsContainerElement.innerHTML = '';
                 if (query === '') {
-                    perfiles.forEach((perfil) => {
-                        const cardElement = getCardElement(perfil, configId);
-                        cardsContainerElement.appendChild(cardElement);
-                    });
+                    appendCardElements(cardsContainerElement, perfiles, configId);
                     return;
                 }
                 const filteredProfiles = perfiles.filter((perfil) => {
                     return perfil.nombre.toLowerCase().includes(query);
                 });
                 if (filteredProfiles.length > 0) {
-                    filteredProfiles.forEach((perfil) => {
-                        const cardElement = getCardElement(perfil, configId);
-                        cardsContainerElement.appendChild(cardElement);
-                    });
+                    appendCardElements(cardsContainerElement, filteredProfiles, configId);
                 } else {
                     cardsContainerElement.style.display = 'none';
                     cardsMessageElement.style.display = 'flex';
@@ -74,10 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // CONTAINER
             const cardsContainerElement = document.querySelector('.cards-container');
-            perfiles.forEach((perfil) => {
-                const cardElement = getCardElement(perfil, configId);
-                cardsContainerElement.appendChild(cardElement);
-            });
+            appendCardElements(cardsContainerElement, perfiles, configId);
 
             const cardsMessageElement = document.querySelector('.cards-message');
         }

@@ -8,15 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
             titleElement.textContent = perfil.nombre;
 
             // CONTAINER
-            const imgElement = document.querySelector('.perfil-img');
+            const imgElement = document.querySelector('.profile-img');
             const profileImg = getImgElement(perfiles.find((p) => p.ci === profileId));
             imgElement.appendChild(profileImg);
 
             // CONTENT
-            const nameElement = document.querySelector('.perfil-content-name');
+            const nameElement = document.querySelector('.profile-content-name');
             nameElement.textContent = perfil.nombre;
 
-            const descriptionElement = document.querySelector('.perfil-content-description');
+            const descriptionElement = document.querySelector('.profile-content-description');
             descriptionElement.textContent = perfil.descripcion;
 
             // CONTENT DATA
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             // CONTENT CONTACT
-            const contactElement = document.querySelector('.perfil-content-contact');
+            const contactElement = document.querySelector('.profile-content-contact');
             const emailElement = document.createElement('a');
             emailElement.textContent = perfil.email;
             emailElement.href = `mailto:${perfil.email}`;

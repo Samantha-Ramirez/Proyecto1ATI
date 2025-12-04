@@ -51,7 +51,7 @@ export function doOnload(runLogic) {
     const handleScriptLoad = function () {
         loadedScripts++;
         if (loadedScripts === totalScripts) {
-            runLogic(profileId, configId);
+            runLogic.call(window, profileId, configId);
         }
     };
 

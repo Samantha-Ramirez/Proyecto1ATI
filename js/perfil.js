@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // CONTENT DATA
             const dataIds = { color: 'color', book: 'libro', music: 'musica', videogames: 'video_juego', langs: 'lenguajes' };
             Object.entries(dataIds).forEach(([key, value]) => {
+                console.log('perfil.js > dataLabelElement this:', this);
                 const dataLabelElement = document.getElementById(key);
                 const dataValueElement = dataLabelElement.nextElementSibling;
                 dataLabelElement.textContent = `${config[value]}:`;

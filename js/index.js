@@ -1,6 +1,7 @@
 import { getJoinedArray, getImgElement, doOnload } from './utils.js';
 
 function getCardElement(perfil, configId) {
+    console.log('index.js > getCardElement this:', this);
     const aElement = document.createElement('a');
     const liElement = document.createElement('li');
     const imgElement = getImgElement(perfil);
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // SEARCH
             const searchProfile = function () {
+                console.log('index.js > searchProfile this:', this);
                 cardsMessageElement.style.display = 'none';
                 cardsContainerElement.style.display = 'grid';
 
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // CONTAINER
             const cardsContainerElement = document.querySelector('.cards-container');
             perfiles.forEach((perfil) => {
+                console.log('index.js > cardsContainerElement this:', this);
                 const cardElement = getCardElement(perfil, configId);
                 cardsContainerElement.appendChild(cardElement);
             });

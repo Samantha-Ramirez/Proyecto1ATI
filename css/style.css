@@ -18,7 +18,7 @@ a[href^="mailto:"] {
 a[href^="mailto:"]:active {
     color: red;
 }
-.perfil-container {
+.profile-container {
     margin: 50px auto;
     max-width: 800px;
     display: flex;
@@ -26,45 +26,45 @@ a[href^="mailto:"]:active {
     gap: 5px;
 }
 /* Curva del borde superior izquierdo de la imagen */
-.perfil-container img {
+.profile-container img {
     border-top-left-radius: 50px;
     width: 180px;
     height: 100%;
     display: block;
     object-fit: cover;
 }
-.perfil-content {
+.profile-content {
     border: 1px solid black;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
 }
 /* En letra más grande y de otro color */
-.perfil-content-name {
+.profile-content-name {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 1.8rem;
     color: orange;
 }
 /* Con una fuente distinta a la de defecto, y en cursiva. */
-.perfil-content-description {
+.profile-content-description {
     margin-top: 0.5rem;
     margin-bottom: 0.8rem;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
 }
-.perfil-content-data {
+.profile-content-data {
     line-height: 1.6;
     display: flex; 
     flex-wrap: wrap;
 }
-.perfil-content-data p, .perfil-content-data strong {
+.profile-content-data p, .profile-content-data strong {
     margin-top: 0;
     margin-bottom: 0;
     width: 50%;
     font-family:'Times New Roman', Times, serif;
     text-align: left;
 }
-.perfil-content-contact {
+.profile-content-contact {
     margin-top: 0;
     margin-bottom: 1rem;
     font-family:'Times New Roman', Times, serif;
@@ -72,26 +72,26 @@ a[href^="mailto:"]:active {
 
 /* INDEX */
 /* Debe estar separadas gráficamente de <section> por una línea. */
-header nav {
+.navbar-container {
     background-color: #79a6e8;
     border-bottom: 1px solid #79a6e8;
     padding: 10px 10px;
     font-size: 1.5rem;
     color: white;
 }
-header nav form {
+#siteSearch {
     display: flex;
     align-items: center;
     gap: 5px;
 }
-header nav input[type="text"] {
+#searchText {
     border: none;
     padding: 5px;
     width: 150px;
     height: auto;
     font-size: 70%;
 }
-header nav input[type="submit"] {
+#searchSubmit {
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 5px;
@@ -100,7 +100,7 @@ header nav input[type="submit"] {
     color: #79a6e8;
     font-size: 70%;
 }
-nav ul {
+.navbar-content {
     margin: 0;
     padding: 0;
     display: flex;
@@ -108,7 +108,7 @@ nav ul {
     align-items: stretch;
     list-style: none;
 }
-nav ul li:first-child {
+.navbar-content li:first-child {
     font-weight: bold;
 }
 li span {
@@ -178,36 +178,36 @@ footer {
         font-size: 8px;
     }
     /* PERFIL */
-    .perfil-container {
+    .profile-container {
         width: 95%;
     }
-    .perfil-container img {
+    .profile-container img {
         width: 120px;
     }
-    .perfil-content {
+    .profile-content {
         width: 100%;
     }
-    .perfil-content-name {
+    .profile-content-name {
         font-size: 1rem;
     }
-    .perfil-content-description {
+    .profile-content-description {
         margin-top: 0.2rem;
         margin-bottom: 0.5rem;
     }
-    .perfil-content-contact {
+    .profile-content-contact {
         margin-bottom: 0.7rem;
     }
     /* INDEX */
-    header nav {
+    .navbar-container {
         font-size: 1rem;
     }
-    header nav form {
+    #siteSearch {
         width: 100%;
     }
-    header nav input[type="text"] {
+    #searchText {
         width: 70%;
     }
-    nav ul {
+    .navbar-content {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
@@ -236,27 +236,27 @@ footer {
         font-size: 10px;
     }
     /* PERFIL */
-    .perfil-container {
+    .profile-container {
         width: 95%;
     }
-    .perfil-container img {
+    .profile-container img {
         width: 140px;
     }
-    .perfil-content {
+    .profile-content {
         width: 100%;
     }
-    .perfil-content-name {
+    .profile-content-name {
         font-size: 1.2rem;
     }
-    .perfil-content-description {
+    .profile-content-description {
         margin-top: 0.4rem;
         margin-bottom: 0.7rem;
     }
-    .perfil-content-contact {
+    .profile-content-contact {
         margin-bottom: 0.9rem;
     }
     /* INDEX */
-    header nav {
+    .navbar-container {
         font-size: 1.2rem;
     }
     footer {
@@ -282,27 +282,27 @@ footer {
         font-size: 16px;
     }
     /* PERFIL */
-    .perfil-container {
+    .profile-container {
         width: 95%;
     }
-    .perfil-container img {
+    .profile-container img {
         width: 180px;
     }
-    .perfil-content {
+    .profile-content {
         width: 100%;
     }
-    .perfil-content-name {
+    .profile-content-name {
         font-size: 1.8rem;
     }
-    .perfil-content-description {
+    .profile-content-description {
         margin-top: 0.5rem;
         margin-bottom: 0.8rem;
     }
-    .perfil-content-contact {
+    .profile-content-contact {
         margin-bottom: 1rem;
     }
     /* INDEX */
-    header nav {
+    .navbar-container {
         font-size: 1.5rem;
     }
     footer {
@@ -321,27 +321,27 @@ footer {
         font-size: 18px;
     }
     /* PERFIL */
-    .perfil-container {
+    .profile-container {
         width: 95%;
     }
-    .perfil-container img {
+    .profile-container img {
         width: 200px;
     }
-    .perfil-content {
+    .profile-content {
         width: 100%;
     }
-    .perfil-content-name {
+    .profile-content-name {
         font-size: 2rem;
     }
-    .perfil-content-description {
+    .profile-content-description {
         margin-top: 0.7rem;
         margin-bottom: 1rem;
     }
-    .perfil-content-contact {
+    .profile-content-contact {
         margin-bottom: 1.2rem;
     }
     /* INDEX */
-    header nav {
+    .navbar-container {
         font-size: 1.7rem;
     }
     footer {

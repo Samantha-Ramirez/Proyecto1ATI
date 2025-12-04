@@ -188,6 +188,9 @@ footer {
 .hidden {
     display: none !important;
 }
+.show-flex {
+    display: flex !important;
+}
 /* Características de cuatro tipos de pantallas usando media con breakpoint */
 /* Dispositivos móviles */
 @media (max-width: 480px) {

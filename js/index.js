@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // SEARCH
             const searchProfile = function () {
                 siteMessageElement.classList.add('hidden');
+                siteMessageElement.classList.remove('show-flex');
                 cardsContainerElement.classList.remove('hidden');
 
                 const query = searchTextElement.value.trim().toLowerCase();
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     cardsContainerElement.classList.add('hidden');
                     siteMessageElement.classList.remove('hidden');
+                    siteMessageElement.classList.add('show-flex');
                     siteMessageElement.textContent = `${config.no_encontrado}: ${query}`;
                 }
             };

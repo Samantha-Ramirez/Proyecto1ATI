@@ -35,10 +35,10 @@ function getCardElement(perfil, configId) {
     return liElement;
 }
 
-function appendCardElements(container, elements, configId) {
+function appendCardElements(container, perfiles, configId) {
     const fragmentContainer = document.createDocumentFragment();
-    elements.forEach((element) => {
-        const cardElement = getCardElement(element, configId);
+    perfiles.forEach((perfil) => {
+        const cardElement = getCardElement(perfil, configId);
         fragmentContainer.appendChild(cardElement);
     });
     container.innerHTML = '';
@@ -54,19 +54,27 @@ async function loadProfileView(perfil, config) {
     const template = document.getElementById('profileTemplate');
     const clone = template.content.cloneNode(true);
 
-    // CONTAINER
+    // BACK BUTTON
+    const backButtonElement = clone.querySelector('#backButton');
+    backButtonElement.textContent = config.home;
+    backButtonElement.onclick = () => {
+        profileView.classList.add('hidden');
+        listView.classList.remove('hidden');
+    };
+
+    // PROFILE IMG
     const imgElement = clone.querySelector('.profile-img');
-    const profileImg = getImgElement(perfil);
+    const profileImg = getImgElement(perfiles.find((p) => p.ci === perfil.ci));
     imgElement.appendChild(profileImg);
 
-    // CONTENT
+    // PROFILE CONTENT
     const nameElement = clone.querySelector('.profile-content-name');
     nameElement.textContent = perfil.nombre;
 
     const descriptionElement = clone.querySelector('.profile-content-description');
     descriptionElement.textContent = perfil.descripcion;
 
-    // CONTENT DATA
+    // PROFILE CONTENT DATA
     const dataIds = { color: 'color', book: 'libro', music: 'musica', videogames: 'video_juego', langs: 'lenguajes' };
     Object.entries(dataIds).forEach(([key, value]) => {
         const dataLabelElement = clone.querySelector(`#${key}`);
@@ -75,18 +83,12 @@ async function loadProfileView(perfil, config) {
         dataValueElement.textContent = getJoinedArray(perfil[value], ', ');
     });
 
-    // CONTENT CONTACT
+    // PROFILE CONTENT CONTACT
     const contactElement = clone.querySelector('.profile-content-contact');
     const emailElement = document.createElement('a');
     emailElement.textContent = perfil.email;
     emailElement.href = `mailto:${perfil.email}`;
     contactElement.innerHTML = config.email.replace('[email]', emailElement.outerHTML);
-
-    const backButtonElement = clone.querySelector('#backButton');
-    backButtonElement.onclick = () => {
-        profileView.classList.add('hidden');
-        listView.classList.remove('hidden');
-    };
 
     // Limpiar vista anterior e inyectar el nuevo perfil
     profileView.innerHTML = '';
@@ -147,11 +149,12 @@ async function loadListView(perfil, config) {
     const copyRightElement = document.getElementById('copyRight');
     copyRightElement.textContent = config.copyRight;
 
-    // CONTAINER
+    // CARDS CONTAINER
     const cardsContainerElement = document.querySelector('.cards-container');
     appendCardElements(cardsContainerElement, perfiles, config.id);
 
-    const siteMessageElement = document.querySelector('.site-message');
+    // CARDS MESSAGE
+    const siteMessageElement = document.querySelector('.cards-message');
 }
 
 document.addEventListener('DOMContentLoaded', function () {

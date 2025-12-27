@@ -46,4 +46,4 @@ def application(environ, start_response):
 
     except Exception as e:
         start_response('500 Internal Server Error', [('Content-Type', 'application/json')])
-        return [json.dumps({'error': 'Error interno del servidor'}).encode('utf-8')]
+        return [json.dumps({'error': str(e), 'tipo': str(type(e))}).encode('utf-8')]

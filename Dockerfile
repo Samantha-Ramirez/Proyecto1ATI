@@ -18,11 +18,16 @@ RUN pip3 install beaker-py --break-system-packages
 RUN a2enmod wsgi
 
 # Definir el Alias del URL
-RUN echo "WSGIScriptAlias /ATI /var/www/html/ATI/index.py" > /etc/apache2/conf-available/mod-wsgi.conf && a2enconf mod-wsgi
+RUN echo 'WSGIScriptAlias /ATI/index.py /var/www/html/ATI/index.py \n\
+<Directory /var/www/html/ATI> \n\
+    Options +ExecCGI \n\
+    AddHandler wsgi-script .py \n\
+    Require all granted \n\
+</Directory>' > /etc/apache2/conf-available/mod-wsgi.conf && a2enconf mod-wsgi
 
 # Sincronizar con Git
 WORKDIR /var/www/html
-RUN rm -rf * && git clone https://github.com/Samantha-Ramirez/Proyecto1ATI ATI
+RUN rm -rf * && git clone -b Reto-7 https://github.com/Samantha-Ramirez/Proyecto1ATI ATI
 
 # Ajustar permisos para que Apache pueda ejecutar los scripts
 RUN chown -R www-data:www-data /var/www/html/ATI && chmod -R 755 /var/www/html/ATI
@@ -36,4 +41,4 @@ CMD ["apache2ctl", "-D", "FOREGROUND"]
 # Ejecutar comandos
 # docker build -t proyecto_ati_image .
 # docker run -d -p 8080:80 --name proyecto_ati_container proyecto_ati_image
-# http://localhost:8080/ATI/index.py
+# http://localhost:8080/ATI/

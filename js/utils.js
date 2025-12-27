@@ -20,7 +20,7 @@ export function getUrlParameter(name, def) {
 export async function loadView(profileId, configId, loadFunction) {
     try {
         // Obtener datos del API
-        const response = await fetch(`index.py?id=${profileId}&lang=${configId}`);
+        const response = await fetch(`/ATI/index.py?id=${profileId}&lang=${configId}`);
 
         // Manejar errores al obtener datos
         if (!response.ok) throw new Error("No se pudo inicializar la configuración del sitio.");

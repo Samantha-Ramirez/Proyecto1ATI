@@ -118,14 +118,14 @@ async function loadListView(perfil, config) {
         const query = searchTextElement.value.trim().toLowerCase();
         cardsContainerElement.innerHTML = '';
         if (query === '') {
-            appendCardElements(cardsContainerElement, perfiles, configId);
+            appendCardElements(cardsContainerElement, perfiles, config.id);
             return;
         }
         const filteredProfiles = perfiles.filter((perfil) => {
             return perfil.nombre.toLowerCase().includes(query);
         });
         if (filteredProfiles.length > 0) {
-            appendCardElements(cardsContainerElement, filteredProfiles, configId);
+            appendCardElements(cardsContainerElement, filteredProfiles, config.id);
         } else {
             cardsContainerElement.classList.add('hidden');
             siteMessageElement.classList.remove('hidden');
@@ -149,7 +149,7 @@ async function loadListView(perfil, config) {
 
     // CONTAINER
     const cardsContainerElement = document.querySelector('.cards-container');
-    appendCardElements(cardsContainerElement, perfiles, configId);
+    appendCardElements(cardsContainerElement, perfiles, config.id);
 
     const siteMessageElement = document.querySelector('.site-message');
 }

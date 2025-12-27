@@ -69,7 +69,7 @@ async function loadProfileView(perfil, config) {
     // CONTENT DATA
     const dataIds = { color: 'color', book: 'libro', music: 'musica', videogames: 'video_juego', langs: 'lenguajes' };
     Object.entries(dataIds).forEach(([key, value]) => {
-        const dataLabelElement = clone.getElementById(key);
+        const dataLabelElement = clone.querySelector(`#${key}`);
         const dataValueElement = dataLabelElement.nextElementSibling;
         dataLabelElement.textContent = `${config[value]}:`;
         dataValueElement.textContent = getJoinedArray(perfil[value], ', ');
@@ -82,7 +82,8 @@ async function loadProfileView(perfil, config) {
     emailElement.href = `mailto:${perfil.email}`;
     contactElement.innerHTML = config.email.replace('[email]', emailElement.outerHTML);
 
-    clone.getElementById('backButton').onclick = () => {
+    const backButtonElement = clone.querySelector('#backButton');
+    backButtonElement.onclick = () => {
         profileView.classList.add('hidden');
         listView.classList.remove('hidden');
     };

@@ -8,21 +8,28 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y \
     apache2 apache2-utils ssl-cert \
-    libapache2-mod-wsgi-py3 python3 python3-pip git \
+    libapache2-mod-wsgi-py3 python3 python3-pip python3-dev git \
     && apt-get clean
 
 # Instalar librería Beaker de Python
-RUN pip3 install beaker-py --break-system-packages
+RUN pip3 install beaker --break-system-packages
+
+# Crear carpetas para las sesiones de Beaker con permisos
+RUN mkdir -p /tmp/cache/data /tmp/cache/lock \
+    && chown -R www-data:www-data /tmp/cache \
+    && chmod -R 775 /tmp/cache
 
 # Configurar módulo WSGI en Apache
 RUN a2enmod wsgi
 
-# Definir el Alias del URL
-RUN echo 'WSGIScriptAlias /ATI/index.py /var/www/html/ATI/index.py \n\
+# Definir el alias del URL y redirección
+RUN echo 'RedirectMatch ^/$ /ATI/ \n\
+WSGIScriptAlias /ATI/index.py /var/www/html/ATI/index.py \n\
 <Directory /var/www/html/ATI> \n\
     Options +ExecCGI \n\
     AddHandler wsgi-script .py \n\
     Require all granted \n\
+    DirectoryIndex index.py \n\
 </Directory>' > /etc/apache2/conf-available/mod-wsgi.conf && a2enconf mod-wsgi
 
 # Sincronizar con Git

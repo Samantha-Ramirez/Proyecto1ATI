@@ -1,7 +1,7 @@
 export function displayError(message) {
     const errorContainer = document.createElement('div');
     errorContainer.className = 'site-error';
-    errorContainer.textContent = `Error: ${message}`;
+    errorContainer.textContent = message;
     document.body.innerHTML = errorContainer.outerHTML;
 }
 
@@ -20,14 +20,20 @@ export function getUrlParameter(name, def) {
 export async function loadView(profileId, configId, loadFunction) {
     try {
         // Obtener datos del API
-        const response = await fetch(`/ATI/index.py?id=${profileId}&lang=${configId}`);
+        const response = await fetch(`/ATI/index.py?id=${profileId}&lang=${configId}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
         // Manejar errores al obtener datos
-        if (!response.ok) throw new Error("No se pudo inicializar la configuración del sitio.");
+        if (!response.ok) throw new Error("Error en la comunicación con el servidor");
+
+        const data = await response.json();
 
         // Cargar vista respectiva
-        const { perfil, config } = await response.json();
-        loadFunction(perfil, config);
+        loadFunction(data.perfil, data.config);
     } catch (error) {
         displayError(error.message);
     }

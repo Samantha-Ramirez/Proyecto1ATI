@@ -26,7 +26,10 @@ function getCardElement(perfil, configId) {
     const imgElement = getImgElement(perfil);
     const pElement = document.createElement('p');
 
-    liElement.onclick = () => loadView(perfil.ci, configId, loadProfileView);
+    liElement.onclick = () => {
+        currentProfileId = perfil.ci;
+        loadView(currentProfileId, configId, loadProfileView);
+    };
     liElement.className = 'card-content';
     pElement.textContent = perfil.nombre;
 
@@ -47,6 +50,8 @@ function appendCardElements(container, perfiles) {
 }
 
 async function loadProfileView(perfil, config) {
+    currentProfileId = perfil.ci;
+
     // LISTVIEW, PROFILEVIEW
     const listView = document.getElementById('listView');
     const profileView = document.getElementById('profileView');
@@ -112,12 +117,20 @@ async function loadListView(perfil, config) {
     const siteGreetingsElement = document.getElementById('siteGreetings');
     siteGreetingsElement.textContent = `${config.saludo}, ${perfiles[0].nombre}`;
 
-    // CONFIG SELECT
+    // SITE CONFIG 
     const siteConfigSelect = document.getElementById('siteConfig');
     siteConfigSelect.addEventListener('change', (e) => {
-        const newLang = e.target.value;
+        const configId = e.target.value;
+        const isProfileVisible = !document.getElementById('profileView').classList.contains('hidden');
+        const profileId = isProfileVisible ? currentProfileId : getUrlParameter('id', '31307714');
+
         // Recargar vista
-        loadView(perfil.ci, newLang, loadListView);
+        if(isProfileVisible) {
+            loadView(profileId, configId, loadListView);
+            loadView(profileId, configId, loadProfileView);
+        } else {
+            loadView(profileId, configId, loadListView);
+        }
     });
 
     // SEARCH
@@ -166,11 +179,10 @@ async function loadListView(perfil, config) {
     const siteMessageElement = document.querySelector('.cards-message');
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Obtener parámetros iniciales
-    let profileId = getUrlParameter('id', '31307714');
-    let configId = getUrlParameter('lang', 'ES');
+let currentProfileId = getUrlParameter('id', '31307714');
+let currentConfigId = getUrlParameter('lang', 'ES');
 
+document.addEventListener('DOMContentLoaded', function () {
     // Cargar listado
-    loadView(profileId, configId, loadListView);
+    loadView(currentProfileId, currentConfigId, loadListView);
 });

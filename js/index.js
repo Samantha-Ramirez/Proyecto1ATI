@@ -35,7 +35,8 @@ function getCardElement(perfil, configId) {
     return liElement;
 }
 
-function appendCardElements(container, perfiles, configId) {
+function appendCardElements(container, perfiles) {
+    const configId = document.getElementById('siteConfig').value;
     const fragmentContainer = document.createDocumentFragment();
     perfiles.forEach((perfil) => {
         const cardElement = getCardElement(perfil, configId);
@@ -111,6 +112,14 @@ async function loadListView(perfil, config) {
     const siteGreetingsElement = document.getElementById('siteGreetings');
     siteGreetingsElement.textContent = `${config.saludo}, ${perfiles[0].nombre}`;
 
+    // CONFIG SELECT
+    const siteConfigSelect = document.getElementById('siteConfig');
+    siteConfigSelect.addEventListener('change', (e) => {
+        const newLang = e.target.value;
+        // Recargar vista
+        loadView(perfil.ci, newLang, loadListView);
+    });
+
     // SEARCH
     const searchProfile = function () {
         siteMessageElement.classList.add('hidden');
@@ -120,14 +129,14 @@ async function loadListView(perfil, config) {
         const query = searchTextElement.value.trim().toLowerCase();
         cardsContainerElement.innerHTML = '';
         if (query === '') {
-            appendCardElements(cardsContainerElement, perfiles, config.id);
+            appendCardElements(cardsContainerElement, perfiles);
             return;
         }
         const filteredProfiles = perfiles.filter((perfil) => {
             return perfil.nombre.toLowerCase().includes(query);
         });
         if (filteredProfiles.length > 0) {
-            appendCardElements(cardsContainerElement, filteredProfiles, config.id);
+            appendCardElements(cardsContainerElement, filteredProfiles);
         } else {
             cardsContainerElement.classList.add('hidden');
             siteMessageElement.classList.remove('hidden');
@@ -151,14 +160,17 @@ async function loadListView(perfil, config) {
 
     // CARDS CONTAINER
     const cardsContainerElement = document.querySelector('.cards-container');
-    appendCardElements(cardsContainerElement, perfiles, config.id);
+    appendCardElements(cardsContainerElement, perfiles);
 
     // CARDS MESSAGE
     const siteMessageElement = document.querySelector('.cards-message');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const profileId = getUrlParameter('id', '31307714');
-    const configId = getUrlParameter('lang', 'ES');
+    // Obtener parámetros iniciales
+    let profileId = getUrlParameter('id', '31307714');
+    let configId = getUrlParameter('lang', 'ES');
+
+    // Cargar listado
     loadView(profileId, configId, loadListView);
 });

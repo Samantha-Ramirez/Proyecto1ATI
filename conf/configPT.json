@@ -1,4 +1,5 @@
-const config = {
+{
+	"id": "PT",
 	"sitio": ["ATI","[UCV]","2025-2"],
 	"home": "Início",
 	"login": "Sessão",
@@ -13,5 +14,5 @@ const config = {
 	"email":"Se precisar me contatar pode me escrever em [email]",
 	"buscar": "Procurar",
 	"no_encontrado": "Não há alunos cujo nome inclua",
-	"saludo": "Olá",
+	"saludo": "Olá"
 }

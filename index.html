@@ -16,6 +16,13 @@
                 <li id="siteTitle"></li>
                 <li><span id="siteGreetings"></span></li>
                 <li>
+                    <select id="siteConfig">
+                        <option value="ES" selected>ES</option>
+                        <option value="EN">EN</option>
+                        <option value="PT">PT</option>
+                    </select>
+                </li>
+                <li>
                     <form id="siteSearch">
                        <input id="searchText" type="text" placeholder="" value="">
                        <input id="searchSubmit" type="submit" value=""> 
@@ -24,13 +31,34 @@
             </ul>
         </nav>
     </header>
-    <br>
-    <section>
-        <ul class="cards-container">
-        </ul>
-        <p class="site-message"></p>
+
+    <section id="listView">
+        <ul class="cards-container"></ul>
+        <p class="cards-message"></p>
     </section>
-    <br>
+
+    <section id="profileView" class="hidden">
+    </section>
+
+    <template id="profileTemplate">
+        <button id="backButton" value=""></button>
+        <div class="profile-container">
+            <div class="profile-img"></div>
+            <div class="profile-content">
+                <p class="profile-content-name"></p>
+                <p class="profile-content-description"></p>
+                <div class="profile-content-data">
+                    <p id="color" class="data-label"></p><p class="data-value"></p>
+                    <p id="book" class="data-label"></p><p class="data-value"></p>
+                    <p id="music" class="data-label"></p><p class="data-value"></p>
+                    <p id="videogames" class="data-label"></p><p class="data-value"></p>
+                    <strong id="langs" class="data-label"></strong><strong class="data-value"></strong>
+                </div>
+                <p class="profile-content-contact"></p>
+            </div>
+        </div>
+    </template>
+
     <footer id="copyRight"></footer>
 </body>
 </html>

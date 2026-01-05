@@ -1,15 +1,52 @@
-FROM ubuntu
+# Usar imagen de Ubuntu
+FROM ubuntu:latest
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y apache2
-RUN apt-get install -y apache2-utils
-RUN apt-get clean
+# Evitar interacciones durante la instalación
+ENV DEBIAN_FRONTEND=noninteractive
 
-COPY . /var/www/html
+# Instalar Apache, Python y componentes necesarios
+RUN apt-get update \
+    && apt-get install -y \
+    apache2 apache2-utils ssl-cert \
+    libapache2-mod-wsgi-py3 python3 python3-pip python3-dev git \
+    && apt-get clean
 
+# Instalar librería Beaker de Python
+RUN pip3 install beaker --break-system-packages
+
+# Crear carpetas para las sesiones de Beaker con permisos
+RUN mkdir -p /tmp/cache/data /tmp/cache/lock \
+    && chown -R www-data:www-data /tmp/cache \
+    && chmod -R 775 /tmp/cache
+
+# Configurar módulo WSGI en Apache
+RUN a2enmod wsgi
+
+# Definir el alias del URL y redirección
+RUN echo 'RedirectMatch ^/$ /ATI/ \n\
+WSGIScriptAlias /ATI/index.py /var/www/html/ATI/index.py \n\
+<Directory /var/www/html/ATI> \n\
+    Options +ExecCGI \n\
+    AddHandler wsgi-script .py \n\
+    Require all granted \n\
+    DirectoryIndex index.py \n\
+</Directory>' > /etc/apache2/conf-available/mod-wsgi.conf && a2enconf mod-wsgi
+
+# Sincronizar con Git
+WORKDIR /var/www/html
+RUN rm -rf * && git clone -b Reto-7 https://github.com/Samantha-Ramirez/Proyecto1ATI ATI
+RUN git config --global --add safe.directory /var/www/html/ATI
+
+# Ajustar permisos para que Apache pueda ejecutar los scripts
+RUN chown -R www-data:www-data /var/www/html/ATI && chmod -R 755 /var/www/html/ATI
+
+# Exponer el puerto 80
 EXPOSE 80
 
+# Iniciar Apache en primer plano
 CMD ["apache2ctl", "-D", "FOREGROUND"]
 
-# Comandos
+# Ejecutar comandos
 # docker build -t proyecto_ati_image .
-# docker run -tid --name proyecto_ati_container -d -p 8080:80 proyecto_ati_image
+# docker run -d -p 8080:80 --name proyecto_ati_container proyecto_ati_image
+# http://localhost:8080/ATI/
